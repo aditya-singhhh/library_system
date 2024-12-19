@@ -34,7 +34,7 @@ The application will be available at http://127.0.0.1:5000/ by default.
 
 ## 2. Design Choices Made
 
-### Modularity
+### Modularity:
 
 The project is structured into blueprints (auth, books, members) to achieve modularity and separation of concerns. Each module handles specific functionalities:
 
@@ -44,7 +44,7 @@ The project is structured into blueprints (auth, books, members) to achieve modu
 
 **members.py**: Manages member-related operations.
 
-### Security
+### Security:
 
 **Token-Based Authentication**: JWTs are used for stateless authentication. Tokens are stored in secure cookies (HttpOnly, Secure, SameSite attributes).
 
@@ -52,32 +52,28 @@ The project is structured into blueprints (auth, books, members) to achieve modu
 
 **Password Hashing**: Passwords are hashed using pbkdf2:sha256 for secure storage.
 
-### Scalability
+### Scalability:
 
 **Pagination**: All list-based endpoints (e.g., books, members) implement pagination to handle large datasets efficiently.
 
 **Database Abstraction**: SQLAlchemy is used for ORM, enabling easy migration to other databases if required.
 
-**Validation**: Input validation ensures data integrity. Required fields are checked in API endpoints. Role values are validated against a predefined set.
+**Validation**: Input validation ensures data integrity. Required fields are checked in API endpoints, and role values are validated against a predefined set.
 
 
-### 3. Assumptions and Limitations
+## 3. Assumptions and Limitations
 
-## Assumptions
+### Assumptions:
 
-**Roles**: Users have two roles i.e. admin and user. admin has full access, while the user has limited access.
+**Roles**: Users have two roles: admin and user. The admin has full access, while the user has limited access to book-related routes only.
 
 **Book Availability**: The available field indicates whether a book can be borrowed but does not track actual borrowing.
 
-### Limitations
+### Limitations:
 
 **Search Functionality**: The search feature supports only basic filtering by title and author.
 
 **Email Validation**: No advanced email validation or verification mechanism is implemented.
 
-Scalability:
-
-While the application supports pagination, it has not been optimized for high concurrency or very large datasets.
-
-For further assistance or inquiries, feel free to reach out!
+**Scalability:** While the application supports pagination, it has not been optimized for high concurrency or very large datasets.
 
